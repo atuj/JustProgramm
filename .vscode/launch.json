@@ -1,0 +1,128 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "JustProgramm (Debug)",
+			"request": "launch",
+			"preLaunchTask": "JustProgramm Win64 Debug Build",
+			"program": "D:\\lesson_2_kurs\\Project_UE4\\JustProgramm\\Binaries\\Win64\\UE4-Win64-Debug.exe",
+			"args": [
+			],
+			"cwd": "D:\\aaaaa\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "JustProgramm (DebugGame)",
+			"request": "launch",
+			"preLaunchTask": "JustProgramm Win64 DebugGame Build",
+			"program": "D:\\lesson_2_kurs\\Project_UE4\\JustProgramm\\Binaries\\Win64\\UE4-Win64-DebugGame.exe",
+			"args": [
+			],
+			"cwd": "D:\\aaaaa\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "JustProgramm (Development)",
+			"request": "launch",
+			"preLaunchTask": "JustProgramm Win64 Development Build",
+			"program": "D:\\lesson_2_kurs\\Project_UE4\\JustProgramm\\Binaries\\Win64\\UE4.exe",
+			"args": [
+			],
+			"cwd": "D:\\aaaaa\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "JustProgramm (Shipping)",
+			"request": "launch",
+			"preLaunchTask": "JustProgramm Win64 Shipping Build",
+			"program": "D:\\lesson_2_kurs\\Project_UE4\\JustProgramm\\Binaries\\Win64\\UE4-Win64-Shipping.exe",
+			"args": [
+			],
+			"cwd": "D:\\aaaaa\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "JustProgramm (Test)",
+			"request": "launch",
+			"preLaunchTask": "JustProgramm Win64 Test Build",
+			"program": "D:\\lesson_2_kurs\\Project_UE4\\JustProgramm\\Binaries\\Win64\\UE4-Win64-Test.exe",
+			"args": [
+			],
+			"cwd": "D:\\aaaaa\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "JustProgrammEditor (Debug)",
+			"request": "launch",
+			"preLaunchTask": "JustProgrammEditor Win64 Debug Build",
+			"program": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe",
+			"args": [
+				"D:\\lesson_2_kurs\\Project_UE4\\JustProgramm\\JustProgramm.uproject"
+			],
+			"cwd": "D:\\aaaaa\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "JustProgrammEditor (DebugGame)",
+			"request": "launch",
+			"preLaunchTask": "JustProgrammEditor Win64 DebugGame Build",
+			"program": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Binaries\\Win64\\UE4Editor-Win64-DebugGame.exe",
+			"args": [
+				"D:\\lesson_2_kurs\\Project_UE4\\JustProgramm\\JustProgramm.uproject"
+			],
+			"cwd": "D:\\aaaaa\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "JustProgrammEditor (Development)",
+			"request": "launch",
+			"preLaunchTask": "JustProgrammEditor Win64 Development Build",
+			"program": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Binaries\\Win64\\UE4Editor.exe",
+			"args": [
+				"D:\\lesson_2_kurs\\Project_UE4\\JustProgramm\\JustProgramm.uproject"
+			],
+			"cwd": "D:\\aaaaa\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "Generate Project Files",
+			"type": "clr",
+			"request": "launch",
+			"program": "D:\\aaaaa\\Epic Games\\UE_4.27\\Engine\\Binaries\\DotNET\\UnrealBuildTool.exe",
+			"console": "externalTerminal",
+			"args": [
+				"-projectfiles",
+				"-vscode",
+				"-project=D:\\lesson_2_kurs\\Project_UE4\\JustProgramm\\JustProgramm.uproject",
+				"-game",
+				"-engine"
+			],
+			"internalConsoleOptions": "openOnSessionStart",
+			"cwd": "D:\\aaaaa\\Epic Games\\UE_4.27"
+		}
+	]
+}
