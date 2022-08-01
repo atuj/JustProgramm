@@ -22,17 +22,8 @@ void AAActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
-
-	FTransform Transform = GetActorTransform();
-	FVector Location = Transform.GetLocation();
-	FRotator Rotator = Transform.Rotator();
-	FVector Scale = Transform.GetScale3D();
-
-	UE_LOG(LogBaseActor,Display,TEXT("Transform %s"), *Transform.ToString());
-	UE_LOG(LogBaseActor,Display,TEXT("Location %s"), *Location.ToString());
-	UE_LOG(LogBaseActor,Display,TEXT("Rotator %S"), *Rotator.ToString());
-	UE_LOG(LogBaseActor,Display,TEXT("Scale %s"), *Scale.ToString());
-	UE_LOG(LogBaseActor,Error,TEXT("Transform v2 %s"), *Transform.ToHumanReadableString());
+    InitialLocation = GetActorLocation();
+	
 	
 	//printTypes()
 	//printStringTypes()
@@ -43,7 +34,25 @@ void AAActor::BeginPlay()
 void AAActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
+	FVector CurrentLocation = GetActorLocation();
+	float time = GetWorld()->GetTimeSeconds();
+	CurrentLocation.Z = InitialLocation.Z + Amplitude * FMath::Sin(Frequency*time);
+	SetActorLocation(CurrentLocation);
 
+}
+void AAAcror::printFtransform()
+{
+    FTransform Transform = GetActorTransform();
+	FVector Location = Transform.GetLocation();
+	FRotator Rotator = Transform.Rotator();
+	FVector Scale = Transform.GetScale3D();
+
+	UE_LOG(LogBaseActor,Display,TEXT("Transform %s"), *Transform.ToString());
+	UE_LOG(LogBaseActor,Display,TEXT("Location %s"), *Location.ToString());
+	UE_LOG(LogBaseActor,Display,TEXT("Rotator %S"), *Rotator.ToString());
+	UE_LOG(LogBaseActor,Display,TEXT("Scale %s"), *Scale.ToString());
+	UE_LOG(LogBaseActor,Error,TEXT("Transform v2 %s"), *Transform.ToHumanReadableString());
 }
 
 void AAActor::printTypes()

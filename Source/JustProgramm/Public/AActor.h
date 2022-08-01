@@ -24,6 +24,14 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
+	UPROPERTY(EditAnywhere,Category = "Movement")
+	float Amplitude = 50.0f;
+	
+	UPROPERTY(EditAnywhere,Category = "Movement")
+    float Frequency = 2.0f;
+	
+	
+	
 	UPROPERTY(EditAnywhere,Category = "Custom")
 	int32 WeaponsNum = 3;
 
@@ -31,7 +39,7 @@ protected:
 	int32 KillsNum = 6;
 	
 	UPROPERTY(EditInstanceOnly, Category = "Custom")	
-	float Health = 33.444;
+	float Health = 33.444f;
 
 	UPROPERTY(EditAnywhere, Category = "Custom")	
 	bool IsDead = false;
@@ -43,6 +51,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 private:
+
+    FVector InitialLocation;
 	void printTypes();
 	void printStringTypes();
+	void printFtransform();
 };
