@@ -22,6 +22,18 @@ void AAActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
+
+	FTransform Transform = GetActorTransform();
+	FVector Location = Transform.GetLocation();
+	FRotator Rotator = Transform.Rotator();
+	FVector Scale = Transform.GetScale3D();
+
+	UE_LOG(LogBaseActor,Display,TEXT("Transform %s"), *Transform.ToString());
+	UE_LOG(LogBaseActor,Display,TEXT("Location %s"), *Location.ToString());
+	UE_LOG(LogBaseActor,Display,TEXT("Rotator %S"), *Rotator.ToString());
+	UE_LOG(LogBaseActor,Display,TEXT("Scale %s"), *Scale.ToString());
+	UE_LOG(LogBaseActor,Error,TEXT("Transform v2 %s"), *Transform.ToHumanReadableString());
+	
 	//printTypes()
 	//printStringTypes()
 	 UE_LOG(LogBaseActor,Display,TEXT("Info"));

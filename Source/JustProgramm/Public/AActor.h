@@ -15,7 +15,9 @@ class JUSTPROGRAMM_API AAActor : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AAActor();
-
+	
+	
+	
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent *BaseMesh;
 protected:
