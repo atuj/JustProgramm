@@ -3,6 +3,7 @@
 
 #include "AActor.h"
 #include "Engine/Engine.h"
+#include "Materials/MaterialInstanceDynamic.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogBaseActor,All,All);
 
@@ -28,7 +29,19 @@ void AAActor::BeginPlay()
 	//printTypes()
 	//printStringTypes()
 	 UE_LOG(LogBaseActor,Display,TEXT("Info"));
+
+	SetColor(GeometryData.Color);
+	
 }
+void AAActor::SetColor(const FLinearColor &Color)
+{
+	UMaterialInstanceDynamic* DynMaterial = BaseMesh->CreateAndSetMaterialInstanceDynamic(0);
+	if (DynMaterial)
+	{
+		DynMaterial->SetVectorParameterValue("Color",Color);
+	}
+}
+
 
 // Called every frame
 void AAActor::Tick(float DeltaTime)
