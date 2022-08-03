@@ -35,13 +35,27 @@ void AAActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	FVector CurrentLocation = GetActorLocation();
-	float time = GetWorld()->GetTimeSeconds();
-	CurrentLocation.Z = InitialLocation.Z + Amplitude * FMath::Sin(Frequency*time);
-	SetActorLocation(CurrentLocation);
-
+	HandleMovement();
+	
 }
-void AAAcror::printFtransform()
+void AAActor::HandleMovement()
+{
+	switch(GeometryData.MoveType)
+	{
+	case EMovementType::Sin:
+		{
+			FVector CurrentLocation = GetActorLocation();
+			float time = GetWorld()->GetTimeSeconds();
+			CurrentLocation.Z = InitialLocation.Z + GeometryData.Amplitude * FMath::Sin(GeometryData.Frequency*time);
+			SetActorLocation(CurrentLocation);
+		}
+	case EMovementType::Static: break;
+	default: break;
+	}
+}
+
+
+void AAActor::printFtransform()
 {
     FTransform Transform = GetActorTransform();
 	FVector Location = Transform.GetLocation();
