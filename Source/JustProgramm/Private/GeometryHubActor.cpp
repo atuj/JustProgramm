@@ -2,6 +2,7 @@
 
 
 #include "GeometryHubActor.h"
+#include "Engine/World.h"
 
 // Sets default values
 AGeometryHubActor::AGeometryHubActor()
@@ -16,6 +17,10 @@ void AGeometryHubActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	DoActorSpawn1();
+	DoActorSpawn2();
+	DoActorSpawn3();
+	
 }
 
 // Called every frame
@@ -23,5 +28,61 @@ void AGeometryHubActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AGeometryHubActor::DoActorSpawn1()
+{
+	UWorld* World = GetWorld();
+	if(World)
+	{
+		for (int32 i = 0; i< 10; i++)
+		{
+			const FTransform GeometryTransform = FTransform(FRotator::ZeroRotator,FVector(0.0f,300.0f * i,300.0f)); 
+			AAActor* Geometry = World->SpawnActor<AAActor>(GeometryClass,GeometryTransform);
+			if (Geometry)
+			{
+				FGeometryData Data;
+				Data.MoveType =FMath::RandBool() ? EMovementType::Static : EMovementType::Sin;
+				Geometry->SetGeometryData(Data);
+			}
+				
+		}
+	}
+}
+void AGeometryHubActor::DoActorSpawn2()
+{
+	UWorld* World = GetWorld();
+	if(World)
+	{
+		for (int32 i = 0; i< 10; i++)
+		{
+			const FTransform GeometryTransform = FTransform(FRotator::ZeroRotator,FVector(0.0f,300.0f * i,700.0f)); 
+			AAActor* Geometry = World->SpawnActorDeferred<AAActor>(GeometryClass,GeometryTransform);
+			if (Geometry)
+			{
+				FGeometryData Data;
+				Data.MoveType = FMath::RandBool() ? EMovementType::Static : EMovementType::Sin;
+				Geometry->SetGeometryData(Data);
+				Geometry->FinishSpawning(GeometryTransform);
+			}
+				
+		}
+	}
+}
+void AGeometryHubActor::DoActorSpawn3()
+{
+	UWorld* World = GetWorld();
+	if(World)
+	{
+		for(const FGeometryPayload Payload: GeometryPayloads)
+		{
+			AAActor* Geometry = World->SpawnActorDeferred<AAActor>(Payload.GeometryClass, Payload.InitialTransform);
+			if (Geometry)
+			{
+				Geometry->SetGeometryData(Payload.Data);
+				Geometry->FinishSpawning(Payload.InitialTransform);
+			}
+		}
+	}
 }
 

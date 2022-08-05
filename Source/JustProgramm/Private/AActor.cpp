@@ -38,6 +38,7 @@ void AAActor::BeginPlay()
 }
 void AAActor::SetColor(const FLinearColor &Color)
 {
+	if(!BaseMesh) return;
 	UMaterialInstanceDynamic* DynMaterial = BaseMesh->CreateAndSetMaterialInstanceDynamic(0);
 	if (DynMaterial)
 	{
@@ -77,9 +78,12 @@ void AAActor::HandleMovement()
 	case EMovementType::Sin:
 		{
 			FVector CurrentLocation = GetActorLocation();
-			float time = GetWorld()->GetTimeSeconds();
-			CurrentLocation.Z = InitialLocation.Z + GeometryData.Amplitude * FMath::Sin(GeometryData.Frequency*time);
-			SetActorLocation(CurrentLocation);
+			if(GetWorld())
+			{
+				float time = GetWorld()->GetTimeSeconds();
+				CurrentLocation.Z = InitialLocation.Z + GeometryData.Amplitude * FMath::Sin(GeometryData.Frequency*time);
+				SetActorLocation(CurrentLocation);
+			}
 		}
 	case EMovementType::Static: break;
 	default: break;
@@ -123,7 +127,11 @@ void AAActor::printStringTypes()
 	FString Stat = FString::Printf(TEXT("\n == All stat ==\n %s \n %s \n %s "),*WeaponsNumStr,*HealthStr,*IsDeadStr);
 	UE_LOG(LogBaseActor,Warning,TEXT("%s"),*Stat);
 
-	GEngine->AddOnScreenDebugMessage(-1,3.0f,FColor::Purple,Name);
-	GEngine->AddOnScreenDebugMessage(-1,5.0f,FColor::Green,Stat,true,FVector2D(1.5f,1.5f));
+	if(GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(-1,3.0f,FColor::Purple,Name);
+		GEngine->AddOnScreenDebugMessage(-1,5.0f,FColor::Green,Stat,true,FVector2D(1.5f,1.5f));
+	}
+	
 }
 
