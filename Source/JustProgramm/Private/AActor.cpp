@@ -36,6 +36,14 @@ void AAActor::BeginPlay()
 	GetWorldTimerManager().SetTimer(TimerHandle, this, &AAActor::OnTimerFired,GeometryData.TimerRate,true);
 		
 }
+
+void AAActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	UE_LOG(LogBaseActor,Error,TEXT("Actor is dead"));
+	Super::EndPlay(EndPlayReason);
+}
+
+
 void AAActor::SetColor(const FLinearColor &Color)
 {
 	if(!BaseMesh) return;
@@ -53,11 +61,13 @@ void AAActor::OnTimerFired()
 		const FLinearColor NewColor = FLinearColor::MakeRandomColor();
 		UE_LOG(LogBaseActor,Display,TEXT("color: %s"), *NewColor.ToString());
 		SetColor(NewColor);
+		OnColorChanged.Broadcast(NewColor,GetName());
 	}
 	else
 	{
 		UE_LOG(LogBaseActor,Warning,TEXT("Timer has been stoped"));
 		GetWorldTimerManager().ClearTimer(TimerHandle);
+		OnTimerFinished.Broadcast(this);
 	}
 	
 }
